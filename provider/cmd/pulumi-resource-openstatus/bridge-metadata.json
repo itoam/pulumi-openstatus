@@ -1,0 +1,22 @@
+{
+    "auto-aliasing": {
+        "resources": {
+            "openstatus_monitor": {
+                "current": "openstatus:index/monitor:Monitor",
+                "majorVersion": 1,
+                "fields": {
+                    "assertions": {
+                        "maxItemsOne": false
+                    },
+                    "headers": {
+                        "maxItemsOne": false
+                    },
+                    "regions": {
+                        "maxItemsOne": false
+                    }
+                }
+            }
+        }
+    },
+    "auto-settings": {}
+}

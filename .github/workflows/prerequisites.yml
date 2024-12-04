@@ -74,7 +74,7 @@ jobs:
         EOF=$(dd if=/dev/urandom bs=15 count=1 status=none | base64)
         {
           echo "SCHEMA_CHANGES<<$EOF";
-          schema-tools compare -r github://api.github.com/pulumi -p xyz -o "${{ inputs.default_branch }}" -n --local-path=provider/cmd/pulumi-resource-xyz/schema.json;
+          schema-tools compare -r github://api.github.com/itoam -p openstatus -o "${{ inputs.default_branch }}" -n --local-path=provider/cmd/pulumi-resource-openstatus/schema.json;
           echo "$EOF";
         } >> "$GITHUB_ENV"
     - if: inputs.is_pr && inputs.is_automated == false
@@ -89,16 +89,16 @@ jobs:
 
           Maintainer note: consult the [runbook](https://github.com/pulumi/platform-providers-team/blob/main/playbooks/tf-provider-updating.md) for dealing with any breaking changes.
 
-    - name: Upload pulumi-tfgen-xyz
+    - name: Upload pulumi-tfgen-openstatus
       uses: actions/upload-artifact@b4b15b8c7c6ac21ea08fcf65892d2ee8f75cf882 # v4.4.3
       with:
-        name: pulumi-tfgen-xyz
-        path: ${{ github.workspace }}/bin/pulumi-tfgen-xyz
+        name: pulumi-tfgen-openstatus
+        path: ${{ github.workspace }}/bin/pulumi-tfgen-openstatus
         retention-days: 30
 
     - name: Upload schema-embed.json
       uses: actions/upload-artifact@b4b15b8c7c6ac21ea08fcf65892d2ee8f75cf882 # v4.4.3
       with:
         name: schema-embed.json
-        path: provider/cmd/pulumi-resource-xyz/schema-embed.json
+        path: provider/cmd/pulumi-resource-openstatus/schema-embed.json
         retention-days: 30

@@ -1,0 +1,335 @@
+{
+    "name": "openstatus",
+    "displayName": "OpenStatus",
+    "description": "A Pulumi package for creating and managing openstatus cloud resources.",
+    "keywords": [
+        "openstatus",
+        "category/cloud"
+    ],
+    "homepage": "https://www.openstatus.dev",
+    "license": "Apache-2.0",
+    "attribution": "This Pulumi package is based on the [`openstatus` Terraform Provider](https://github.com/itoam/terraform-provider-openstatus).",
+    "repository": "https://github.com/itoam/pulumi-openstatus",
+    "publisher": "ITOAM",
+    "meta": {
+        "moduleFormat": "(.*)(?:/[^/]*)"
+    },
+    "language": {
+        "csharp": {
+            "packageReferences": {
+                "Pulumi": "3.*"
+            },
+            "compatibility": "tfbridge20",
+            "respectSchemaVersion": true
+        },
+        "go": {
+            "importBasePath": "github.com/itoam/pulumi-openstatus/sdk/go/openstatus",
+            "generateResourceContainerTypes": true,
+            "generateExtraInputTypes": true,
+            "respectSchemaVersion": true
+        },
+        "nodejs": {
+            "packageDescription": "A Pulumi package for creating and managing openstatus cloud resources.",
+            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/itoam/terraform-provider-openstatus)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi-openstatus` repo](https://github.com/itoam/pulumi-openstatus/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-provider-openstatus` repo](https://github.com/itoam/terraform-provider-openstatus/issues).",
+            "compatibility": "tfbridge20",
+            "disableUnionOutputTypes": true,
+            "respectSchemaVersion": true
+        },
+        "python": {
+            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/itoam/terraform-provider-openstatus)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi-openstatus` repo](https://github.com/itoam/pulumi-openstatus/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-provider-openstatus` repo](https://github.com/itoam/terraform-provider-openstatus/issues).",
+            "compatibility": "tfbridge20",
+            "respectSchemaVersion": true,
+            "pyproject": {
+                "enabled": true
+            }
+        }
+    },
+    "config": {
+        "variables": {
+            "openstatusApiToken": {
+                "type": "string",
+                "description": "openstatus.dev api token.\n"
+            }
+        },
+        "defaults": [
+            "openstatusApiToken"
+        ]
+    },
+    "types": {
+        "openstatus:index/MonitorAssertion:MonitorAssertion": {
+            "properties": {
+                "compare": {
+                    "type": "string",
+                    "description": "The comparison to run\n"
+                },
+                "key": {
+                    "type": "string",
+                    "description": "The key to check\n"
+                },
+                "target": {
+                    "type": "string",
+                    "description": "The target value\n"
+                },
+                "type": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "compare",
+                "target",
+                "type"
+            ]
+        },
+        "openstatus:index/MonitorHeader:MonitorHeader": {
+            "properties": {
+                "key": {
+                    "type": "string"
+                },
+                "value": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "key",
+                "value"
+            ]
+        }
+    },
+    "provider": {
+        "description": "The provider type for the openstatus package. By default, resources use package-wide configuration\nsettings, however an explicit `Provider` instance may be created and passed during resource\nconstruction to achieve fine-grained programmatic control over provider settings. See the\n[documentation](https://www.pulumi.com/docs/reference/programming-model/#providers) for more information.\n",
+        "properties": {
+            "openstatusApiToken": {
+                "type": "string",
+                "description": "openstatus.dev api token.\n"
+            }
+        },
+        "required": [
+            "openstatusApiToken"
+        ],
+        "inputProperties": {
+            "openstatusApiToken": {
+                "type": "string",
+                "description": "openstatus.dev api token.\n"
+            }
+        },
+        "requiredInputs": [
+            "openstatusApiToken"
+        ]
+    },
+    "resources": {
+        "openstatus:index/monitor:Monitor": {
+            "description": "\u003chttps://docs.openstatus.dev/synthetic/features/monitor\u003e\n",
+            "properties": {
+                "active": {
+                    "type": "boolean",
+                    "description": "If the monitor is active\n"
+                },
+                "assertions": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/openstatus:index/MonitorAssertion:MonitorAssertion"
+                    },
+                    "description": "The assertions to run\n"
+                },
+                "body": {
+                    "type": "string",
+                    "description": "The body\n"
+                },
+                "degradedAfter": {
+                    "type": "number",
+                    "description": "The time after the monitor is considered degraded\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "The description of your monitor\n"
+                },
+                "headers": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/openstatus:index/MonitorHeader:MonitorHeader"
+                    },
+                    "description": "The headers of your request\n"
+                },
+                "method": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the monitor\n"
+                },
+                "periodicity": {
+                    "type": "string",
+                    "description": "How often the monitor should run\n"
+                },
+                "public": {
+                    "type": "boolean",
+                    "description": "If the monitor is public\n"
+                },
+                "regions": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Where we should monitor it\n"
+                },
+                "timeout": {
+                    "type": "number",
+                    "description": "The timeout of the request\n"
+                },
+                "url": {
+                    "type": "string",
+                    "description": "The url to monitor\n"
+                }
+            },
+            "required": [
+                "active",
+                "assertions",
+                "body",
+                "degradedAfter",
+                "description",
+                "headers",
+                "method",
+                "name",
+                "periodicity",
+                "public",
+                "regions",
+                "timeout",
+                "url"
+            ],
+            "inputProperties": {
+                "active": {
+                    "type": "boolean",
+                    "description": "If the monitor is active\n"
+                },
+                "assertions": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/openstatus:index/MonitorAssertion:MonitorAssertion"
+                    },
+                    "description": "The assertions to run\n"
+                },
+                "body": {
+                    "type": "string",
+                    "description": "The body\n"
+                },
+                "degradedAfter": {
+                    "type": "number",
+                    "description": "The time after the monitor is considered degraded\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "The description of your monitor\n"
+                },
+                "headers": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/openstatus:index/MonitorHeader:MonitorHeader"
+                    },
+                    "description": "The headers of your request\n"
+                },
+                "method": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the monitor\n"
+                },
+                "periodicity": {
+                    "type": "string",
+                    "description": "How often the monitor should run\n"
+                },
+                "public": {
+                    "type": "boolean",
+                    "description": "If the monitor is public\n"
+                },
+                "regions": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Where we should monitor it\n"
+                },
+                "timeout": {
+                    "type": "number",
+                    "description": "The timeout of the request\n"
+                },
+                "url": {
+                    "type": "string",
+                    "description": "The url to monitor\n"
+                }
+            },
+            "requiredInputs": [
+                "periodicity",
+                "url"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Monitor resources.\n",
+                "properties": {
+                    "active": {
+                        "type": "boolean",
+                        "description": "If the monitor is active\n"
+                    },
+                    "assertions": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/openstatus:index/MonitorAssertion:MonitorAssertion"
+                        },
+                        "description": "The assertions to run\n"
+                    },
+                    "body": {
+                        "type": "string",
+                        "description": "The body\n"
+                    },
+                    "degradedAfter": {
+                        "type": "number",
+                        "description": "The time after the monitor is considered degraded\n"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "The description of your monitor\n"
+                    },
+                    "headers": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/openstatus:index/MonitorHeader:MonitorHeader"
+                        },
+                        "description": "The headers of your request\n"
+                    },
+                    "method": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the monitor\n"
+                    },
+                    "periodicity": {
+                        "type": "string",
+                        "description": "How often the monitor should run\n"
+                    },
+                    "public": {
+                        "type": "boolean",
+                        "description": "If the monitor is public\n"
+                    },
+                    "regions": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Where we should monitor it\n"
+                    },
+                    "timeout": {
+                        "type": "number",
+                        "description": "The timeout of the request\n"
+                    },
+                    "url": {
+                        "type": "string",
+                        "description": "The url to monitor\n"
+                    }
+                },
+                "type": "object"
+            }
+        }
+    }
+}
